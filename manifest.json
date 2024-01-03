@@ -4,7 +4,13 @@
   "version": "1.0",
   "description": "Developed by Ant Software",
   "author": "Ant Software",
-  "permissions": ["storage", "activeTab", "scripting", "tabs", "nativeMessaging"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "nativeMessaging"
+  ],
   "action": {
     "default_icon": {
       "16": "images/icon16.png",
@@ -20,5 +26,11 @@
   },
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*"],
+      "js": ["content.js"]
+    }
+  ]
 }
