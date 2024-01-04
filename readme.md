@@ -1,7 +1,7 @@
 # Hướng dẫn cài đặt
 
 - Vào [https://github.com/duc30012001/end-stream-ext](https://github.com/duc30012001/end-stream-ext)
-- Chọn code -> Download ZIP
+- Bấm vào Code -> Download ZIP
 - Vào [chrome://extensions/](chrome://extensions)
 - Bật chế độ nhà triển (Developer mode)
 - Chọn Load unpacked rồi chọn thư mục chứa file extension
