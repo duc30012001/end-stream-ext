@@ -1,20 +1,30 @@
-const TIME_LOOP = 2000;
+// ===================================== CONSTANTS ===============================================
+const TIME_REPEAT_CHECK_WARNING = 2000;
+
+const CHECKBOX_ID = "auto-end-stream";
+
+// id element youtube
 const DETAIL_ID = "detail";
 const END_STREAM_ID = "end-stream-button";
 const CONFIRM_BUTTON_CLASS = "ytcp-confirmation-dialog";
+
+// message button xác nhận kết thúc stream (để chữ thường)
 const CONFIRM_BUTTON_MESSAGE_EN = "end";
 const CONFIRM_BUTTON_MESSAGE_VI = "kết thúc";
+
+// message cảnh báo bản quyền (để chữ thường)
 const WARNING_MESSAGE_EN =
   "we've detected video in your stream belonging to someone else";
 const WARNING_MESSAGE_VI =
   "chúng tôi phát hiện video trong sự kiện phát trực tiếp của bạn thuộc về người khác";
+// ================================================================================================
 
 let enableAutoEndStream = false;
 
 chrome.storage.onChanged.addListener((changes) => {
   enableAutoEndStream = changes.autoEnd.newValue;
   if (enableAutoEndStream) {
-    setInterval(endStream, TIME_LOOP);
+    setInterval(endStream, TIME_REPEAT_CHECK_WARNING);
   } else {
     window.location.reload();
   }
@@ -48,7 +58,7 @@ function endStream() {
 async function onPageLoaded() {
   const { autoEnd } = await chrome.storage.local.get();
   if (autoEnd) {
-    setInterval(endStream, TIME_LOOP);
+    setInterval(endStream, TIME_REPEAT_CHECK_WARNING);
   }
 }
 

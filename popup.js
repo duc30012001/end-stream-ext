@@ -12,34 +12,22 @@ chrome.storage.local.get(["autoEnd"], async ({ autoEnd }) => {
 checkbox.addEventListener("change", async (e) => {
   const isChecked = e.target.checked;
 
-  const tabId = await getCurrentTabId();
+  // const tabId = await getCurrentTabId();
 
-  chrome.storage.local.get("autoEndValue", ({ autoEndValue = [] }) => {
-    const index = autoEndValue.findIndex((item) => item === tabId);
+  setIcon(isChecked);
 
-    if (index === -1 && isChecked) {
-      autoEndValue.push(tabId);
-    }
+  // if (isChecked) {
+  //   chrome.windows.create({ tabId });
+  // }
 
-    if (index > -1 && !isChecked) {
-      autoEndValue.splice(index, 1);
-    }
-
-    setIcon(isChecked);
-
-    // if (isChecked) {
-    //   chrome.windows.create({ tabId });
-    // }
-
-    chrome.storage.local.set({ autoEndValue, autoEnd: isChecked });
-  });
+  chrome.storage.local.set({ autoEnd: isChecked });
 });
 
-async function getCurrentTabId() {
-  const [tab] = await chrome.tabs.query({
-    active: true,
-    currentWindow: true,
-  });
+// async function getCurrentTabId() {
+//   const [tab] = await chrome.tabs.query({
+//     active: true,
+//     currentWindow: true,
+//   });
 
-  return tab.id;
-}
+//   return tab.id;
+// }
