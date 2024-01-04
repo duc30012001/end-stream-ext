@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Automatically ends stream",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Developed by Ant Software",
   "author": "Ant Software",
   "permissions": [
@@ -12,25 +12,23 @@
     "nativeMessaging"
   ],
   "action": {
-    "default_icon": {
-      "16": "images/icon16.png",
-      "64": "images/icon64.png",
-      "128": "images/icon128.png"
-    },
     "default_popup": "popup.html"
   },
   "icons": {
-    "16": "images/icon16.png",
-    "64": "images/icon64.png",
-    "128": "images/icon128.png"
+    "16": "images/active/icon16.png",
+    "64": "images/active/icon64.png",
+    "128": "images/active/icon128.png"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
-      "matches": ["*"],
-      "js": ["content.js"]
+      "matches": ["https://studio.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "type": "module"
     }
   ]
 }

@@ -1,8 +1,11 @@
-alert("Page loaded");
+import { setIcon } from "./setIcon.js";
 
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-  if (changeInfo.status === "complete") {
-    // Page is loaded, inject content script or perform actions
-    chrome.tabs.executeScript(tabId, { file: "popup.js" });
-  }
+chrome.runtime.onInstalled.addListener(async () => {
+  const { autoEnd } = await chrome.storage.local.get();
+  setIcon(autoEnd);
+});
+
+chrome.tabs.onUpdated.addListener(async () => {
+  const { autoEnd } = await chrome.storage.local.get();
+  setIcon(autoEnd);
 });
