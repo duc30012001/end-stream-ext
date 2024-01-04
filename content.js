@@ -1,6 +1,6 @@
 // ===================================== CONSTANTS ===============================================
 // thời gian lặp lại check cảnh báo bản quyền (millisecond)
-const TIME_REPEAT_CHECK_WARNING = 2000;
+const TIME_REPEAT_CHECK_WARNING = 10000;
 
 // id element youtube
 const DETAIL_ID = "detail";
@@ -12,7 +12,7 @@ const CONFIRM_BUTTON_MESSAGE = ["end", "kết thúc"];
 
 // message cảnh báo bản quyền
 const WARNING_MESSAGE = [
-  "we've detected video in your stream belonging to someone else",
+  "detected video in your stream belonging to someone else",
   "chúng tôi phát hiện video trong sự kiện phát trực tiếp của bạn thuộc về người khác",
 ];
 // ================================================================================================
