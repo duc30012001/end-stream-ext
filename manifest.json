@@ -1,16 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Automatically ends stream",
+  "name": "Auto End Stream",
   "version": "1.0.0",
-  "description": "Developed by Ant Software",
-  "author": "Ant Software",
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting",
-    "tabs",
-    "nativeMessaging"
-  ],
+  "description": "Extension that automatically ends a live stream when there is a copyright warning. Developed by Ant Group",
+  "author": "Ant Group",
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "action": {
     "default_popup": "popup.html"
   },
@@ -26,7 +20,7 @@
   "content_scripts": [
     {
       "matches": ["https://studio.youtube.com/*"],
-      "js": ["content.js"],
+      "js": ["bundle.js"],
       "run_at": "document_idle",
       "type": "module"
     }
