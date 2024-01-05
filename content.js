@@ -1,39 +1,27 @@
-// ===================================== CONSTANTS ===============================================
-// thời gian lặp lại check cảnh báo bản quyền (millisecond)
-const TIME_REPEAT_CHECK_WARNING = 10000;
+import {
+  DETAIL_ID,
+  END_STREAM_ID,
+  CONFIRM_BUTTON_CLASS,
+  WARNING_MESSAGE,
+  CONFIRM_BUTTON_MESSAGE,
+  TIME_REPEAT_CHECK_WARNING,
+} from "./config.js";
 
-// id element youtube
-const DETAIL_ID = "detail";
-const END_STREAM_ID = "end-stream-button";
-const CONFIRM_BUTTON_CLASS = "ytcp-confirmation-dialog";
+const checkMessageIncludesItem = (message, items) => {
+  const lowercasedMessage = message.toLowerCase();
+  return items.some((item) => lowercasedMessage.includes(item.toLowerCase()));
+};
 
-// text button xác nhận kết thúc stream
-const CONFIRM_BUTTON_MESSAGE = ["end", "kết thúc"];
+const checkIsConfirmEndStreamButton = (message) =>
+  checkMessageIncludesItem(message, CONFIRM_BUTTON_MESSAGE);
 
-// message cảnh báo bản quyền
-const WARNING_MESSAGE = [
-  "detected video in your stream belonging to someone else",
-  "chúng tôi phát hiện video trong sự kiện phát trực tiếp của bạn thuộc về người khác",
-];
-// ================================================================================================
+const checkIsWarningCopyright = (message) =>
+  checkMessageIncludesItem(message, WARNING_MESSAGE);
 
-chrome.storage.onChanged.addListener((changes) => {
-  const isEnableAutoEndStream = changes.autoEnd.newValue;
-  if (isEnableAutoEndStream) {
-    enableAutoEndStream();
-  } else {
-    window.location.reload();
-  }
-});
+const getListConfirmButton = () =>
+  document.getElementsByClassName(CONFIRM_BUTTON_CLASS);
 
-async function onPageLoaded() {
-  const { autoEnd } = await chrome.storage.local.get();
-  if (autoEnd) {
-    enableAutoEndStream();
-  }
-}
-
-function endStream() {
+const endStream = () => {
   console.log("running");
   const detail = document.getElementById(DETAIL_ID);
   const detailContent = detail?.innerHTML ?? "";
@@ -45,31 +33,31 @@ function endStream() {
 
     Array.from(listConfirmButton).forEach((item) => {
       const elementContent = item.innerHTML;
+
       if (checkIsConfirmEndStreamButton(elementContent)) {
         item.click();
       }
     });
   }
-}
+};
 
-function checkIsConfirmEndStreamButton(message) {
-  return CONFIRM_BUTTON_MESSAGE.some((item) =>
-    message.toLowerCase().includes(item.toLowerCase())
-  );
-}
-
-function checkIsWarningCopyright(message) {
-  return WARNING_MESSAGE.some((item) =>
-    message.toLowerCase().includes(item.toLowerCase())
-  );
-}
-
-function getListConfirmButton() {
-  return document.getElementsByClassName(CONFIRM_BUTTON_CLASS);
-}
-
-function enableAutoEndStream() {
+const enableAutoEndStream = () =>
   setInterval(endStream, TIME_REPEAT_CHECK_WARNING);
-}
+
+chrome.storage.onChanged.addListener((changes) => {
+  const isEnableAutoEndStream = changes.autoEnd.newValue;
+  if (isEnableAutoEndStream) {
+    enableAutoEndStream();
+  } else {
+    window.location.reload();
+  }
+});
+
+const onPageLoaded = async () => {
+  const { autoEnd } = await chrome.storage.local.get();
+  if (autoEnd) {
+    enableAutoEndStream();
+  }
+};
 
 onPageLoaded();
