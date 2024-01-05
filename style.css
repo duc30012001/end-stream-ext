@@ -1,16 +1,18 @@
 html {
-  font-family: "Arial";
+  font-family: "Inter", sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 500;
+  line-height: 1.5rem;
+  color: #303030;
 }
 
-.container {
+.ext-container {
   width: 210px;
 }
 
@@ -23,6 +25,7 @@ html {
 
 .footer {
   background-color: #f0f0f0;
+  color: #636363;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -30,6 +33,12 @@ html {
   padding: 8px 0;
 }
 
-.footer-color {
+.footer-name {
   color: #636363;
+  text-decoration: none;
+}
+
+.footer-name:hover {
+  color: #1e79e4;
+  text-decoration: underline;
 }
