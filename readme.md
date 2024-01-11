@@ -17,6 +17,6 @@
 4. Lưu thay đổi và đóng trình soạn thảo văn bản.
 5. Chạy lệnh `npx webpack`
 6. Quay lại [chrome://extensions](chrome://extensions) trên trình duyệt của bạn.
-7. Nhấn vào nút Reload của extension để áp dụng các thay đổi.
+7. Gỡ extension hiện tại và cài lại.
 
 Lưu ý rằng các hằng số trong `content.js` điều khiển hành vi của extension. Việc thay đổi các giá trị này có thể thay đổi đáng kể cách hoạt động của extension. Luôn đảm bảo kiểm tra extension sau khi thực hiện bất kỳ thay đổi nào để đảm bảo nó vẫn hoạt động như mong đợi.
