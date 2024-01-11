@@ -9,7 +9,8 @@ export const CONFIRM_BUTTON_CLASS = "ytcp-confirmation-dialog";
 export const CONFIRM_BUTTON_MESSAGE = ["end", "kết thúc"];
 
 // message cảnh báo bản quyền
-export const WARNING_MESSAGE = [
-  "detected video in your stream belonging to someone else",
-  "chúng tôi phát hiện video trong sự kiện phát trực tiếp của bạn thuộc về người khác",
-];
+// export const WARNING_MESSAGE = [
+//   "detected video in your stream belonging to someone else",
+//   "chúng tôi phát hiện video trong sự kiện phát trực tiếp của bạn thuộc về người khác",
+// ];
+export const WARNING_MESSAGE = ["blocked", "bị chặn"];
