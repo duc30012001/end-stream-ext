@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Auto End Stream",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extension that automatically ends a live stream when there is a copyright warning. Developed by Ant Group",
   "author": "Ant Group",
   "permissions": ["storage", "activeTab", "scripting", "tabs"],
