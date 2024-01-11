@@ -25,6 +25,8 @@ const endStream = () => {
   console.log("running");
   const detail = document.getElementById(DETAIL_ID);
   const detailContent = detail?.innerHTML ?? "";
+  console.log("detailContent:", detailContent);
+  console.log("WARNING_MESSAGE:", WARNING_MESSAGE);
   if (checkIsWarningCopyright(detailContent)) {
     const endStreamButton = document.getElementById(END_STREAM_ID);
     endStreamButton?.click();
